@@ -16,5 +16,5 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// Export the Facility schema
+// Export the Resource schema
 module.exports = mongoose.model('Resource', resourceSchema);

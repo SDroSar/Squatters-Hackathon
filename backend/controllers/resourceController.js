@@ -1,4 +1,4 @@
-// Import the facility model refer .js
+// Import the resource model refer .js
 const Resource = require('../models/Resource');
 
 // Part 2: Create async signup controller function
@@ -8,7 +8,7 @@ const signup = async (req, res) => {
 
   // Check if properly saved
   try {
-    const newResource = new Facility({ type, amount});
+    const newResource = new Resource({ type, amount});
     // Function does not run until the promise i.e. save() is executed
     await newResource.save();
     res.status(201).send('Resource created successfully');
