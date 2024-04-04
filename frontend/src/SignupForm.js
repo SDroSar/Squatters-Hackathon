@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const SignupForm = () => {
-  const [username, setUsername] = useState('');
+  const [accountname, setAccountname] = useState('');
   const [password, setPassword] = useState('');
   
   // Function to handle form submission
@@ -10,7 +10,7 @@ const SignupForm = () => {
     e.preventDefault();
   
     try {
-      const res = await axios.post('http://localhost:5000/api/users/signup', { username, password });
+      const res = await axios.post('http://localhost:5000/api/accounts/signup', { accountname, password });
       console.log('Signup Success:', res.data);
     } catch (error) {
       if (error.response) {
@@ -26,11 +26,11 @@ const SignupForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Username:</label>
+        <label>Accountname:</label>
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={accountname}
+          onChange={(e) => setAccountname(e.target.value)}
           required
         />
       </div>
