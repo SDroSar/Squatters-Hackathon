@@ -5,16 +5,24 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   // Add required tag so that all entries to the database must have username and password
   // Add unique tag to username so that no two users can have the same username
-  username: {
+  organisation: {
     type: String,
     required: true,
     unique: true,
   },
-  password: {
+  address: {
+    type: String,
+    required: true,
+  },
+  contact: {
+    type: String,
+    required: true,
+  },  
+  hours: {
     type: String,
     required: true,
   },
 });
 
-// Export the User schema
-module.exports = mongoose.model('User', userSchema);
+// Export the Facility schema
+module.exports = mongoose.model('Facility', facilitySchema);
