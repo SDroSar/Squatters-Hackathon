@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 // Require controller functions
-const userController = require('../controllers/userController');
+const accountController = require('../controllers/accountController');
 
-// Part 1: Create a new POST router for user signup
-router.post('/signup', userController.signup);
+// Part 1: Create a new POST router for account signup
+router.post('/signup', accountController.signup);
 
 module.exports = router;
 
