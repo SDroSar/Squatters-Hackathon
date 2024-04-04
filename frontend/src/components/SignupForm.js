@@ -29,7 +29,7 @@ const SignupForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Fusername:</label>
+        <label>Username:</label>
         <input
           type="text"
           value={username}
