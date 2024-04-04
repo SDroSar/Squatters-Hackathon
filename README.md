@@ -1,30 +1,41 @@
-# MERN Stack Project - Base Code
 
-This branch contains the base code for the MERN stack project.
-We will create a simple signup page which can record the users who sign up.
-Workshop participants will fill the backend .js files during the workshop.
-Frontend code is given, so please refer to the frontend workshop for more information.
+# MERN Stack Project - Final Code
 
-## Requirements
+This branch hosts the final version of the simple signup page.
 
-https://docs.google.com/document/d/1dHABryWlVxH1-qq496gtM8VWi9koev5w1-OYemD84ME/edit?usp=sharing
+## Download to a local device
 
-## Download
-To get started with the base code, clone the repository and check out the `main` branch:
-
+To test this code, clone the repository and check out the `final` branch:
 ```
 git clone https://github.com/KaiKaiai/codebrew2024-backend-workshop.git
-git checkout main
+git checkout final
 ```
 OR
 
-To get started with the base code, download as a ZIP to extract into VSCode
+To test this code, download as a ZIP to extract into VSCode
 
-## Resources
+## Test on a local device
 
-For recording + other Resources:
-https://drive.google.com/drive/folders/1ADf1ZDk6daVeGfpqKdLTKo_jJiZAxen4?usp=sharing
+Recall to install dependancies in the frontend and backend directories:
+```
+npm install
+```
 
-## Issues
+Configure .env file to a live MongoDB Cluster.
 
-Please let one of our workshop helpers know, thanks.
+To run local frontend and backend servers:
+```
+npm start
+```
+
+Fill in form in frontend page, press submit and match with MongoDB collection.
+
+## Debugging
+
+Make use of the console in the browser and terminal for error messages.
+
+Also, utilise Postman to test API requests.
+
+If still stuck, please ask mentors or send a message in our discord: https://discord.gg/9UzJRWmyqz.
+
+Best of Luck, CISSA team.
