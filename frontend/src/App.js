@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
+import Account from "./components/Account";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="Register" element={<Register />} />
           <Route path="Login" element={<Login />} />
+          <Route path="Account" element={<Account />} />
         </Routes>
       </BrowserRouter>
     </Box>

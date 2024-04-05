@@ -69,6 +69,13 @@ const NavBar = () => {
         >
           Register
         </Button>
+        <Button
+          sx={{ ml: 1, color: "white", borderColor: "white" }}
+          variant="Text"
+          onClick={() => navigate("Account")}
+        >
+          Account
+        </Button>
       </Box>
 
       {/*        

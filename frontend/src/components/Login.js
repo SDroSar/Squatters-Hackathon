@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
@@ -6,20 +7,23 @@ import { Box, Button } from "@mui/material";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/users/login", {
-        username,
-        password,
+      const res = await axios.post("http://localhost:5000/api/accounts/login", {
+        accountname: username,
+        password: password,
       });
-      console.log("Register Success:", res.data);
+      console.log("Login Success:", res.data);
+      // navigation to Account
+      navigate("/Account");
     } catch (error) {
       if (error.response) {
-        console.error("Register Error:", error.response.data);
+        console.error("Login Error:", error.response.data);
       } else if (error.request) {
         console.error("No response received:", error.request);
       } else {
@@ -52,7 +56,7 @@ const Login = () => {
           width: "300px",
         }}
       >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => {}}>
           <p>Welcome back! Please login</p>
           <TextField
             sx={{ width: "100%", mb: 2 }}
@@ -74,7 +78,12 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button variant="outlined" type="submit">
+          <Button
+            variant="outlined"
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
             Login
           </Button>
         </form>
