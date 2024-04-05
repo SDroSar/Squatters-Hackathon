@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [accountname, setaccountname] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
@@ -13,9 +13,10 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/users/register", {
-        username,
-        password,
+      const res = await axios.post("http://localhost:5000/api/accounts/register", {
+        accountname: accountname,
+        password: password,
+        email: email
       });
       console.log("Register Success:", res.data);
     } catch (error) {
@@ -31,7 +32,7 @@ const Register = () => {
 
   return (
     <Box
-      component="form"
+      //component="form" this seems to make it break
       theme="none"
       noValidate
       autoComplete="off"
@@ -59,10 +60,10 @@ const Register = () => {
             sx={{ width: "100%", mb: 2 }}
             required
             id="outlined-required"
-            label="Username"
+            label="Account name"
             helperText="Required"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={accountname}
+            onChange={(e) => setaccountname(e.target.value)}
           />
           <TextField
             sx={{ width: "100%", mb: 2 }}

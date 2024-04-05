@@ -32,6 +32,22 @@ const Account = () => {
       }
     }
   };
+
+  const createFac = async (e) => {
+    e.preventDefault();
+    try{
+      navigate(`/FacilityForm/${_id}`);
+    } catch (error) {
+      if (error.response) {
+        console.error("Login Error:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error", error.message);
+      }
+    }
+  };
+
   return (
     <Box
     component="form"
@@ -67,7 +83,7 @@ const Account = () => {
           <Button
             variant="outlined"
             onClick={(e) => {
-              goToFacs(e);
+              createFac(e);
             }}
           >
             Create New Facility
