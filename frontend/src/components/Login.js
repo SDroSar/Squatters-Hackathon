@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
+import { Box, Button } from "@mui/material";
 
-const Register = () => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,7 +12,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/users/register", {
+      const res = await axios.post("http://localhost:5000/api/users/login", {
         username,
         password,
       });
@@ -27,28 +29,58 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <Box
+      component="form"
+      theme="none"
+      noValidate
+      autoComplete="off"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+
+        paddingTop: 6,
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "300px",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <p>Welcome back! Please login</p>
+          <TextField
+            sx={{ width: "100%", mb: 2 }}
+            required
+            id="outlined-required"
+            label="Username"
+            helperText="Required"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <TextField
+            sx={{ width: "100%", mb: 2 }}
+            required
+            id="outlined-required"
+            label="Password"
+            type="password"
+            helperText="Required"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button variant="outlined" type="submit">
+            Login
+          </Button>
+        </form>
+      </Box>
+    </Box>
   );
 };
 
-export default Register;
+export default Login;

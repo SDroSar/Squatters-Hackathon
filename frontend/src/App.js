@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import Home from "./components/Home";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,11 +14,11 @@ function App() {
     <Box
       className="App"
       sx={{
-        color: "white",
-        backgroundColor: "#121212",
+        color: "#190B39",
         minHeight: "100vh",
         padding: 0,
         margin: 0,
+        width: "100%",
       }}
     >
       <BrowserRouter>
@@ -25,9 +26,7 @@ function App() {
         <Routes styles={{ padding: 0, margin: 0 }}>
           <Route index element={<Home />} />
           <Route path="Register" element={<Register />} />
-          {/* <Route path="blogs" element={<Blogs />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="*" element={<NoPage />} /> */}
+          <Route path="Login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </Box>
