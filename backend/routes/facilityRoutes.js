@@ -3,10 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 // Require controller functions
-const facilityController = require('../controllers/facilityController');
+//const accountController = require('../controllers/accountController');
+const {
+    create
+} = require("../controllers/facilityController");
 
-// Part 1: Create a new POST router for facility signup
-router.post('/signup', facilityController.signup);
-
+// Part 1: Create a new POST router for account login
+router.post('/create', create);
 module.exports = router;
+
 

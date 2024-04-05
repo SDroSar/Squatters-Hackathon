@@ -4,7 +4,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const accountRoutes = require('./routes/accountRoutes');
 const facilityRoutes = require('./routes/facilityRoutes');
-const resourceRoutes = require('./routes/resourceRoutes');
 require('dotenv').config();
 
 // Create an Express application
@@ -20,7 +19,7 @@ app.use(express.json());
 // i.e. full route is localhost:5000/api/users/signup
 app.use('/api/accounts', accountRoutes);
 app.use('/api/facilities', facilityRoutes);
-app.use('/api/resources', resourceRoutes);
+
 // Connect to Database
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
