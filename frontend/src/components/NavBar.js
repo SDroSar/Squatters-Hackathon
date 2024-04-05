@@ -11,11 +11,12 @@ import {
   Container,
   Box,
 } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
         flexDirection: "row",
@@ -23,7 +24,7 @@ const NavBar = () => {
         width: "100%",
         justifyContent: "space-between",
         top: 0,
-        backgroundColor: "#3b3b3b",
+        backgroundColor: "#EC9109",
         margin: 0,
         padding: 0,
       }}
@@ -34,6 +35,7 @@ const NavBar = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          mx: 3,
         }}
       >
         <Typography variant="h3">aidLINK</Typography>
@@ -46,10 +48,25 @@ const NavBar = () => {
           justifyContent: "center",
         }}
       >
-        <Button sx={{ mx: 1 }} variant="contained" onClick={() => navigate("")}>
+        <Button
+          sx={{ ml: 1, color: "white", borderColor: "white" }}
+          variant="Text"
+          onClick={() => navigate("")}
+        >
           Home
         </Button>
-        <Button variant="contained" onClick={() => navigate("register")}>
+        <Button
+          sx={{ ml: 1, color: "white", borderColor: "white" }}
+          variant="Text"
+          onClick={() => navigate("Login")}
+        >
+          Login
+        </Button>
+        <Button
+          sx={{ ml: 1, color: "white", borderColor: "white" }}
+          variant="Text"
+          onClick={() => navigate("register")}
+        >
           Register
         </Button>
       </Box>
@@ -66,7 +83,7 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box> */}
-    </Container>
+    </Box>
   );
 };
 

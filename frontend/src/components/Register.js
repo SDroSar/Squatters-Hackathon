@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
+import { Box, Button } from "@mui/material";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -28,37 +30,66 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
+    <Box
+      component="form"
+      theme="none"
+      noValidate
+      autoComplete="off"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
 
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+        paddingTop: 6,
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "300px",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <p>Welcome! Please Register below</p>
+          <TextField
+            sx={{ width: "100%", mb: 2 }}
+            required
+            id="outlined-required"
+            label="Username"
+            helperText="Required"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            sx={{ width: "100%", mb: 2 }}
+            required
+            id="outlined-required"
+            label="Email"
+            type="email"
+            helperText="Required"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            sx={{ width: "100%", mb: 2 }}
+            required
+            id="outlined-required"
+            label="Password"
+            type="password"
+            helperText="Required"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button variant="outlined" type="submit">
+            Register
+          </Button>
+        </form>
+      </Box>
+    </Box>
   );
 };
 

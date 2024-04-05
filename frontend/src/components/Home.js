@@ -6,7 +6,16 @@ import Button from "@mui/material/Button";
 
 const SignupForm = () => {
   return (
-    <Stack spacing={2}>
+    <Stack
+      spacing={2}
+      sx={{
+        marginTop: 10,
+        display: "flex",
+        justifyContent: "center",
+
+        alignItems: "center",
+      }}
+    >
       <Map />
     </Stack>
   );
