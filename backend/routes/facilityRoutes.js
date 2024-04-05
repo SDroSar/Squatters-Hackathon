@@ -5,15 +5,11 @@ const router = express.Router();
 // Require controller functions
 //const accountController = require('../controllers/accountController');
 const {
-    register,
-    login,
-    getAccountData,
-} = require("../controllers/accountController");
+    create
+} = require("../controllers/facilityController");
 
 // Part 1: Create a new POST router for account login
-router.post('/register', register);
-router.post('/login', login);
-router.get('/account', getAccountData);
+router.post('/create', create);
 module.exports = router;
 
 

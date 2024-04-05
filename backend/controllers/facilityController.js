@@ -1,27 +1,26 @@
 // Import the account model refer Account.js
-const Account = require('../models/Account');
+const Facility = require('../models/Facility');
 
-// Part 2: Create async register controller function
-const register = async (req, res) => {
+// Part 2: Create async signup controller function
+const create = async (req, res) => {
   // Extract accountname and password from incoming request body
-  const { accountname, password, email } = req.body;
+  const { facilityname, contactnumber, openinghour, closinghour, address, owner} = req.body;
 
-  const accountExists = await Account.findOne({ email });
-  if (!accountExists) {
+  const facilityExists = await Facility.findOne({ address });
+  if (!facilityExists) {
     try {
-      const newAccount = new Account({ accountname, password, email });
+      const newFacility = new Facility({ facilityname, contactnumber, openinghour, closinghour, address, owner });
       // Function does not run until the promise i.e. save() is executed
-      await newAccount.save();
-      res.status(201).send('Account created successfully');
+      await newFacility.save();
+      res.status(201).send(newFacility);
     // If error, send error message
     } catch (error) {
-      console.error('Error creating the Account:', error);
-      res.status(500).send('Error creating the Account: ' + error.message);
+      console.error('Error creating the Facility:', error);
+      res.status(500).send('Error creating the Facility: ' + error.message);
     }
   } else {
     res.status(400).send('Account already exists.');
   }
-  
 };
 
 const login = async (req, res) => {
@@ -42,5 +41,4 @@ const getAccountData = async(req, res) =>{
   res.json({ message: "Account data" });
 };
 
-// Export the signup function
-module.exports = { register, login, getAccountData };
+module.exports = { create };

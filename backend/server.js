@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const accountRoutes = require('./routes/accountRoutes');
+const facilityRoutes = require('./routes/facilityRoutes');
 require('dotenv').config();
 
 // Create an Express application
@@ -17,6 +18,7 @@ app.use(express.json());
 // Note that the default route is /api/accounts
 // i.e. full route is localhost:5000/api/accounts/signup
 app.use('/api/accounts', accountRoutes);
+app.use('/api/facilities', facilityRoutes);
 
 // Connect to Database
 mongoose.connect(process.env.MONGO_URI)
