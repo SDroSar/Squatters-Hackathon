@@ -13,7 +13,6 @@ const {
 // Part 1: Create a new POST router for account login
 router.post('/register', register);
 router.post('/login', login);
-router.get('/account', getAccountData);
 module.exports = router;
 
 

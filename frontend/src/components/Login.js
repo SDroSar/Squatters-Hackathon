@@ -20,7 +20,7 @@ const Login = () => {
       });
       console.log("Login Success:", res.data);
       // navigation to Account
-      navigate("/Account");
+      navigate(`/Account/${res.data._id}`);
     } catch (error) {
       if (error.response) {
         console.error("Login Error:", error.response.data);

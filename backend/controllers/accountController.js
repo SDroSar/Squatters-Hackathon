@@ -38,9 +38,6 @@ const login = async (req, res) => {
   }
 };
 
-const getAccountData = async(req, res) =>{
-  res.json({ message: "Account data" });
-};
 
 // Export the signup function
-module.exports = { register, login, getAccountData };
+module.exports = { register, login };

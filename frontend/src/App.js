@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar.js";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import Account from "./components/Account";
+import Facility from "./components/Facility";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="Register" element={<Register />} />
           <Route path="Login" element={<Login />} />
-          <Route path="Account" element={<Account />} />
+          <Route path="Account/:_id" element={<Account />} />
+          <Route path="Facility/:_id" element={<Facility />} />
         </Routes>
       </BrowserRouter>
     </Box>

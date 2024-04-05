@@ -23,22 +23,17 @@ const create = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
-  const { accountname, password } = req.body;
+const viewFacilities = async (req, res) => {
+  const {_id} = req.body;
+  const foundFacilities = await Facility.find({owner: _id});
 
-  const foundAccount = await  Account.findOne({accountname: accountname, password: password});
-
-  if(foundAccount){
-    console.log("Result :",foundAccount.password);
-    res.status(201).send(foundAccount);
+  if(foundFacilities){
+    console.log("Result :",foundFacilities);
+    res.status(201).send(foundFacilities);
 
   } else {
     res.status(500).send('Try again');
   }
 };
 
-const getAccountData = async(req, res) =>{
-  res.json({ message: "Account data" });
-};
-
-module.exports = { create };
+module.exports = { create, viewFacilities };
