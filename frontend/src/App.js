@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import Account from "./components/Account";
 import Facility from "./components/Facility";
 import FacilityForm from "./components/FacilityForm";
+import ResourceForm from "./components/ResourceForm";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="Account/:_id" element={<Account />} />
           <Route path="Facility/:_id" element={<Facility />} />
           <Route path="FacilityForm/:_id" element={<FacilityForm />} />
+          <Route path="ResourceForm/:_id" element={<ResourceForm />} />
         </Routes>
       </BrowserRouter>
     </Box>

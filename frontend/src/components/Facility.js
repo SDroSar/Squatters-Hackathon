@@ -10,8 +10,8 @@ import { useEffect } from 'react';
 
 const Facility= () => {
     const {_id} = useParams ();
-    const [name, setName] = useState([]);
-
+    const [facilities, setFacilities] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let ignore = false;
@@ -22,14 +22,12 @@ const Facility= () => {
 
     const viewFacilities = async (e) => {
         //e.preventDefault();
-
-
         try {
             const res = await axios.post("http://localhost:5000/api/facilities/viewFacilities", {
             _id: _id
             });
             console.log("owned facilities:", res.data);
-            setName(res.data);
+            setFacilities(res.data);
             // navigation to Account
             //navigate(`/Facility`);
             
@@ -44,10 +42,27 @@ const Facility= () => {
         }
     };
 
+    const goToResources = async(e, id) => {
+        e.preventDefault();
+        try{
+            console.log("facs: ", facilities);
+            navigate(`/ResourceForm/${id}`);
+        } catch(error) {
+            if (error.response) {
+                console.error(" Error:", error.response.data);
+              } else if (error.request) {
+                console.error("No response received:", error.request);
+              } else {
+                console.error("Error", error.message);
+              }
+            }
+        
+    };
+
   return (
     <div>
         <ol align="left">
-        {name.map((data) => {
+        {facilities.map((data) => {
             return(
                 <li key={data._id}>
                     <ul>
@@ -55,7 +70,12 @@ const Facility= () => {
                         <li> Contact Number: {data.contactnumber}</li>
                         <li> Address: {data.address}</li>
                         <li> Open from {data.openinghour} to {data.closinghour}</li>
-                    </ul>  
+                    </ul>
+                    <button onClick={(e) => {
+                        goToResources(e, data._id);
+                        }}>
+                        Manage resources
+                    </button>
                 </li>
             )
         })}

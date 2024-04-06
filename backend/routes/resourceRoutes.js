@@ -6,7 +6,8 @@ const router = express.Router();
 const resourceController = require('../controllers/resourceController');
 
 // Part 1: Create a new POST router for facility signup
-router.post('/signup', resourceController.signup);
+router.post('/manage', resourceController.manage);
+router.post('/check', resourceController.check);
 
 module.exports = router;
 

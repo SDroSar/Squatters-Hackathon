@@ -3,6 +3,8 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 const FacilityForm = () => {
@@ -13,6 +15,8 @@ const FacilityForm = () => {
   const [address, setAddress] = useState("");
 
   const {_id} = useParams ();
+
+  const navigate = useNavigate();
 
 
   // Function to handle form submission
@@ -29,6 +33,7 @@ const FacilityForm = () => {
         owner: _id
       });
       console.log("Creation Success:", res.data);
+      navigate(`/Account/${res.data.owner}`);
     } catch (error) {
       if (error.response) {
         console.error("Creation Error:", error.response.data);
@@ -65,7 +70,7 @@ const FacilityForm = () => {
         }}
       >
         <form onSubmit={handleSubmit}>
-          <p>Welcome! Please Create Facility below</p>
+          <p>Welcome! Please create facility below</p>
           <TextField
             sx={{ width: "100%", mb: 2 }}
             required

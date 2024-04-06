@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
   const [accountname, setaccountname] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -19,6 +23,9 @@ const Register = () => {
         email: email
       });
       console.log("Register Success:", res.data);
+      navigate(`/Login`);
+
+
     } catch (error) {
       if (error.response) {
         console.error("Register Error:", error.response.data);
