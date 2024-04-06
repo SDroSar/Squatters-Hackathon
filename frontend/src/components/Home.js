@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Map from "./Map";
+import DummyMap from "./DummyMap";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
@@ -16,7 +16,7 @@ const SignupForm = () => {
         alignItems: "center",
       }}
     >
-      <Map />
+      <DummyMap />
     </Stack>
   );
 };

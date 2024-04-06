@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map with Locations</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      width: 700px;
+      height: 700px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const locations = [
+        {
+          lat: 50.0411867,
+          lng: 21.9990196,
+          title: 'Rzeszow',
+          address: 'Al. Józefa Piłsudskiego 34<br>35-001 Rzeszów<br>Poland',
+          telephone: '+48 17 875 47 00',
+          resources: {
+            foodPacks: 100,
+            beds: 100,
+            powerPacks: 100
+          }
+        },
+        {
+          lat: 51.2464536,
+          lng: 22.5684463,
+          title: 'Lublin',
+          address: 'ul. Krakowskie Przedmieście 54<br>20-002 Lublin<br>Poland',
+          telephone: '+48 81 448 08 00',
+          resources: {
+            foodPacks: 100,
+            beds: 100,
+            powerPacks: 100
+          }
+        },
+        {
+          lat: 50.7226256,
+          lng: 23.2514861,
+          title: 'Zamosc',
+          address: 'ul. Gminna 9<br>22-400 Zamość<br>Poland',
+          telephone: '+48 84 530 09 10',
+          resources: {
+            foodPacks: 100,
+            beds: 100,
+            powerPacks: 100
+          }
+        },
+        {
+          lat: 50.0619474,
+          lng: 19.9368564,
+          title: 'Krakow',
+          address: 'ul. Świętokrzyska 12<br>31-015 Kraków<br>Poland',
+          telephone: '+48 12 428 64 00',
+          resources: {
+            foodPacks: 100,
+            beds: 100,
+            powerPacks: 100
+          }
+        }
+      ];
+
+      const map = L.map('map').setView([50.6402778, 22.2444444], 7);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      locations.forEach(function(location) {
+        const marker = L.marker([location.lat, location.lng]).addTo(map);
+        marker.bindPopup(function() {
+          return `
+            <div>
+              <h3>${location.title}</h3>
+              <p><strong>Address:</strong><br>${location.address}</p>
+              <p><strong>Telephone:</strong><br>${location.telephone}</p>
+              <p><strong>Resources:</strong></p>
+              <ul>
+                <li>Food packs: ${location.resources.foodPacks}</li>
+                <li>Beds: ${location.resources.beds}</li>
+                <li>Power packs: ${location.resources.powerPacks}</li>
+              </ul>
+            </div>
+          `;
+        });
+      });
+
+      // Add label for the border between Poland and Ukraine
+      const borderLabel = L.divIcon({
+        className: 'border-label',
+        html: 'Poland-Ukraine Border',
+        iconSize: [150, 20]
+      });
+      L.marker([50.4547, 23.8877], { icon: borderLabel }).addTo(map);
+
+      // Load the GeoJSON file containing the Poland-Ukraine border coordinates
+      fetch('poland-ukraine-border.geojson')
+        .then(response => response.json())
+        .then(data => {
+          // Add the border polyline to the map
+          L.geoJSON(data, {
+            style: {
+              color: 'blue',
+              weight: 3
+            }
+          }).addTo(map);
+        });
+    });
+  </script>
+</body>
+</html>
