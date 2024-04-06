@@ -33,13 +33,13 @@ const locations = [
     beds: 100,
     powerPacks: 100
   } },
-  // { lat: 50.0619474, lng: 19.9368564, title: 'Krakow', address: 'ul. Świętokrzyska 12 31-015 Kraków Poland',
-  // telephone: '+48 12 428 64 00',
-  // resources: {
-  //   foodPacks: 100,
-  //   beds: 100,
-  //   powerPacks: 100
-  // } }
+  { lat: 50.0619474, lng: 19.9368564, title: 'Krakow', address: 'ul. Świętokrzyska 12 31-015 Kraków Poland',
+  telephone: '+48 12 428 64 00',
+  resources: {
+    foodPacks: 100,
+    beds: 100,
+    powerPacks: 100
+  } }
 ];
 
 function MyComponent() {

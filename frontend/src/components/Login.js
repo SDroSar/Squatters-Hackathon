@@ -62,7 +62,7 @@ const Login = () => {
             sx={{ width: "100%", mb: 2 }}
             required
             id="outlined-required"
-            label="Username"
+            label="Account name"
             helperText="Required"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
