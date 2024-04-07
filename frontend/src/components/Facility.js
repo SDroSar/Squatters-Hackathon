@@ -59,6 +59,21 @@ const Facility= () => {
         
     };
 
+    const backToAccount= async(e) =>{
+        e.preventDefault();
+        try{
+            navigate(`/Account/${_id}`)
+        } catch(error) {
+            if (error.response) {
+                console.error(" Error:", error.response.data);
+              } else if (error.request) {
+                console.error("No response received:", error.request);
+              } else {
+                console.error("Error", error.message);
+              }
+        }
+    }
+
   return (
     <div>
         <ol align="left">
@@ -71,15 +86,22 @@ const Facility= () => {
                         <li> Address: {data.address}</li>
                         <li> Open from {data.openinghour} to {data.closinghour}</li>
                     </ul>
-                    <button onClick={(e) => {
+                    <Button onClick={(e) => {
                         goToResources(e, data._id);
                         }}>
                         Manage resources
-                    </button>
+                    </Button>
                 </li>
             )
         })}
         </ol>
+        <Button onClick={(e) => {
+            
+            backToAccount(e);
+            }}
+            variant="outlined">
+            Back to account
+            </Button>
     </div>
    
     )

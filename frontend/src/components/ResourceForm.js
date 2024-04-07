@@ -4,20 +4,15 @@ import Stack from "@mui/material/Stack";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
-import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 
 
 
 const ResourceForm = () => {
 
-    // useEffect(() => {
-    //   let ignore = false;
-      
-    //   if (!ignore)  checkResources()
-    //   return () => { ignore = true; }
-    //   },[]);
-  
+    const navigate = useNavigate();
     const {_id} = useParams ();
     const [foodPackAmount, setFoodPackAmount] = useState("");
     const [bedsAmount, setBedsAmount] = useState("");
@@ -34,6 +29,7 @@ const ResourceForm = () => {
                 facility: _id
             });
             console.log("updated resources:", res.data);
+            
         } catch(error) {
             if (error.response) {
                 console.error(" Error:", error.response.data);
@@ -141,7 +137,8 @@ const ResourceForm = () => {
             Update resources
           </Button>
         </form>
-      </Box>  
+      </Box>
+        
       </Box>
       </Stack>
     )

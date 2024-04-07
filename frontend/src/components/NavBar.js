@@ -24,7 +24,7 @@ const NavBar = () => {
         width: "100%",
         justifyContent: "space-between",
         top: 0,
-        backgroundColor: "#EC9109",
+        backgroundColor: "#58895B",
         margin: 0,
         padding: 0,
       }}
